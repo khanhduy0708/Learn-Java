@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <pre>
+            AJAX là 1 công nghệ cho phép thay đổi 1 phần trong trang web
+            mà ko cần load lại toàn bộ trang
+            Việc sử dụng AJAX cho phép tăng tốc độ và trải nghiệm người dùng
+        </pre>
+        <div id="target"></div>
+        <p>
+            <button id="control">Click here load ajax</button>
+        </p>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $("#control").click(function(){
+                    // Tạo 1 object js để gửi dữ liệu đi
+                    var params = {};
+                    // Khai báo các thuộc tính cho object js
+                    params.current = 30;
+                    params.demo = "danh mục";
+                    params.type = "products";
+
+                    $.ajax({
+                        // đích gửi dữ liệu đến ví dụ: http/abc.com.vn/api/produts
+                        url: "demo_test.txt",
+                        // Khai báo dữ liệu gửi đi
+                        data: params,
+                        // Khai báo kiểu dữ liệu gửi đi là POST hay GET
+                        type: "POST",
+                        // Khai báo kiểu dữ liệu trả về của url
+                        dataType: 'json',
+                        // Trước khi gửi đi muốn làm gì
+                        beforeSend: function(){
+                            alert("Tôi sắp gửi dữ liệu đi");
+                        },
+                        // Nếu dữ liệu gửi thành công
+                        success: function(response){
+                            console.log(response);
+                            console.log(typeof response);
+
+                            var dataTrave = JSON.stringify(response);
+                            $("#target").html(dataTrave);
+                        },
+                        // Nếu dữ liệu gửi đi thất bại (đích đến ko tồn tại)
+                        // (hoặc thời điểm gửi đi url bị lỗi)
+                        error: function(){
+                            alert("Ajax bị lỗi");
+                        },
+                        // Sau khi chạy Ajax thành công
+                        complete: function(){
+                            alert("Ajax đã hoàn thành")
+                        },
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
