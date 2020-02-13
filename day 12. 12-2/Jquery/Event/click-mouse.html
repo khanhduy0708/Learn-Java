@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <h1>Sự kiện Click trong Jquery</h1>
+    <p>đổi màu thẻ p</p>
+    <button id="bt1">Click màu đỏ, dblClick màu xanh</button>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /**
+             * hàm on("event", callback) cho phép gắn nhiều sự kiện cùng 1 lúc
+             */
+            $("#bt1").on("click", function () {
+                $("p").css("color", "red");
+            }).on("dblclick", function () {
+                $("p").css("color", "blue");
+            });
+        });
+    </script>
+</body>
+</html>

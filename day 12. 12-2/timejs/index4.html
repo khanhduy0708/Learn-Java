@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Các hàm để lấy thời gian trong JS</h1>
+
+    <script type="text/javascript">
+        var today= new Date()
+        var sn = new Date("2020-02-15")
+
+        if (today.getMonth() >= sn.getMonth()){ // đã qua sinh nhật theo tháng
+            if (today.getDay() > sn.getDay()){ // nếu cùng 1 tháng
+                var a = today.getTime() - sn.getTime()
+                console.log("Sinh nhật đã qua " +a/1000/60/60/24 +" ngày")
+            }else { // chưa qua sinh nhật theo ngày
+                var a = sn.getTime() - today.getTime()
+                console.log("Còn " +a/1000/60/60/24+ " ngày là đến sinh nhật")
+            }
+        }
+        else { // chưa qua sinh nhật
+            var a = sn.getTime() - today.getTime()  // time sinh nhật trừ time hiên tại
+            console.log(a/1000/60/60/24)
+        }
+
+    </script>
+</body>
+</html>
